@@ -16,3 +16,9 @@ services:
       context: ./crypto-service
     ports:
       - "5002:5002"
+
+  news-service:
+    build:
+      context: ./news-service
+    ports:
+      - "5003:5003"

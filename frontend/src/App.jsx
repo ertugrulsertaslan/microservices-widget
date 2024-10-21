@@ -2,7 +2,7 @@ import "./App.css";
 import CryptoWidget from "./components/CryptoWidget";
 import CurrencyWidget from "./components/CurrencyWidget";
 import WeatherWidget from "./components/WeatherWidget";
-
+import NewsWidget from "./components/NewsWidget";
 function App() {
   return (
     <>
@@ -17,6 +17,9 @@ function App() {
             </div>
             <div className="col-span-1 flex justify-center items-center">
               <CurrencyWidget />
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <NewsWidget />
             </div>
           </div>
         </div>
