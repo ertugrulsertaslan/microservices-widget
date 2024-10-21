@@ -1,17 +1,17 @@
-# Node.js tabanlı bir imajdan başla
+# Start from a Node.js based image
 FROM node:16
 
-# Çalışma dizinini ayarla
+# Set working directory
 WORKDIR /usr/src/app
 
-# Paket tanımlama dosyalarını kopyala
+# Copy package definition files
 COPY package*.json ./
 
-# Gerekli bağımlılıkları yükle
+# Install required dependencies
 RUN npm install
 
-# Uygulama dosyalarını kopyala
+# Copy application files
 COPY . .
 
-# Uygulamayı çalıştır
+# Run the application
 CMD ["node", "index.js"]

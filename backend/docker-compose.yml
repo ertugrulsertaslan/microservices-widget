@@ -5,6 +5,12 @@ services:
     ports:
       - "5000:5000"
 
+  currency-service:
+    build:
+      context: ./currency-service
+    ports:
+      - "5001:5001"
+
   crypto-service:
     build:
       context: ./crypto-service

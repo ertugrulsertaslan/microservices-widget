@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 function WeatherWidget() {
   const [data, setData] = useState(null);
-  const [city, setCity] = useState("Istanbul"); // Varsayılan şehir
-  const [loading, setLoading] = useState(true); // Yükleniyor durumu
+  const [city, setCity] = useState("Istanbul");
+  const [loading, setLoading] = useState(true);
 
   const fetchWeatherData = async () => {
-    setLoading(true); // Yükleniyor durumunu ayarla
+    setLoading(true);
     try {
-      const response = await fetch(`/api/weather?city=${city}`); // API yolunu değiştirin
+      const response = await fetch(`/api/weather?city=${city}`);
       if (!response.ok) throw new Error("Ağ hatası");
       const result = await response.json();
       setData(result);
     } catch (error) {
       console.error("API Error:", error);
     } finally {
-      setLoading(false); // Yükleniyor durumunu sıfırla
+      setLoading(false);
     }
   };
 
