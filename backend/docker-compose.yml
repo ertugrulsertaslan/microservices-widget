@@ -22,3 +22,9 @@ services:
       context: ./news-service
     ports:
       - "5003:5003"
+
+  sports-service:
+    build:
+      context: ./sports-service
+    ports:
+      - "5004:5004"

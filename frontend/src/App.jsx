@@ -3,6 +3,7 @@ import CryptoWidget from "./components/CryptoWidget";
 import CurrencyWidget from "./components/CurrencyWidget";
 import WeatherWidget from "./components/WeatherWidget";
 import NewsWidget from "./components/NewsWidget";
+import SportsWidget from "./components/SportsWidget";
 function App() {
   return (
     <>
@@ -20,6 +21,9 @@ function App() {
             </div>
             <div className="col-span-1 flex justify-center items-center">
               <NewsWidget />
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <SportsWidget />
             </div>
           </div>
         </div>
