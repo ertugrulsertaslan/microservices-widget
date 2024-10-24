@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 function WeatherWidget() {
   const [data, setData] = useState(null);
   const [city, setCity] = useState("roma");
@@ -7,14 +8,23 @@ function WeatherWidget() {
   const fetchWeatherData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/weather?city=${city}`
+      const response = await axios.get(
+        `http://weather-service:5000/api/weather`,
+        {
+          params: { city },
+        }
       );
-      if (!response.ok) throw new Error("Ağ hatası");
-      const result = await response.json();
-      setData(result);
+      setData(response.data);
     } catch (error) {
-      console.error("API Error:", error);
+      console.error("API Error:", error.message);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+      } else if (error.request) {
+        console.error("Request data:", error.request);
+      } else {
+        console.error("Error message:", error.message);
+      }
     } finally {
       setLoading(false);
     }

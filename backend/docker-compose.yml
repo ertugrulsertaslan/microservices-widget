@@ -4,27 +4,55 @@ services:
       context: ./weather-service
     ports:
       - "5000:5000"
+    networks:
+      - backend-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/weather?city=roma"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
 
   currency-service:
     build:
       context: ./currency-service
     ports:
       - "5001:5001"
+    networks:
+      - backend-network
 
   crypto-service:
     build:
       context: ./crypto-service
     ports:
       - "5002:5002"
+    networks:
+      - backend-network
 
   news-service:
     build:
       context: ./news-service
     ports:
       - "5003:5003"
+    networks:
+      - backend-network
 
   sports-service:
     build:
       context: ./sports-service
     ports:
       - "5004:5004"
+    networks:
+      - backend-network
+
+  client:
+    build:
+      context: ../frontend
+    ports:
+      - "5173:5173"
+    command: npm run dev -- --host 0.0.0.0
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
