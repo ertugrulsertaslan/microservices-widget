@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = process.env.baseUrl;
+const BASE_URL = process.env.BASE_URL;
 const API_KEY = process.env.API_KEY;
 const getWeatherData = async (req, res) => {
   const city = req.query.city || "Roma";
